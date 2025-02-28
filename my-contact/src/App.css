@@ -1,0 +1,24 @@
+table {
+  width: 90%;
+  border-collapse: collapse;
+  margin: auto;
+  font-size: 18px;
+}
+td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  width: 39%;
+}
+td:first-child {
+  font-weight: bold;
+  background-color: #f2f2f2;
+}
+.placeCenter {
+  display: flex;
+  margin: auto;
+  justify-items: center;
+}
+
+.active {
+  background-color: rgb(155, 155, 239);
+}
