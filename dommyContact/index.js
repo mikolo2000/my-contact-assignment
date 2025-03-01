@@ -30,10 +30,10 @@ const fetchUsers = async()=>{
   try {
     const response = await axios.get("https://dummyjson.com/users?limit=20&select=id,firstName,lastName,gender,email,phone,age");
     
-    users =response.data.users;
+    users = response.data.users;
     
   } catch (error) {
-    console.log(error);
+    users = [];
   }
 };
 
@@ -86,7 +86,7 @@ try {
     age: age
   }
   users.push(newpost);
-  res.json('User Successfully added');
+  res.json(newpost);
 }
 catch (error) {
   res.status(404).json({ message: error.message});
@@ -118,7 +118,7 @@ app.put('/users/:id', (req, res)=>{
     };
     const userIndex = users.findIndex((user)=>(user.id===id));
     users[userIndex] = editedDetails;
-    res.json('User Successfully updated');
+    res.json(editedDetails);
   } catch (error) {
     res.status(404).json({ message: error.message});
   }
@@ -159,7 +159,7 @@ app.patch('/users/:id', (req, res)=>{
     };
     const userIndex = users.findIndex((user)=>(user.id===id));
     users[userIndex] = editedDetails;
-    res.json('User Successfully updated');
+    res.json(editedDetails);
   } catch (error) {
     res.status(404).json({ message: error.message});
   }
@@ -183,5 +183,4 @@ app.listen(port, ()=>{
   console.log(`listening on port ${port}`);
 });
 
-module.exports = fetchUsers();
-module.exports = app;
+module.exports = {fetchUsers, app};
